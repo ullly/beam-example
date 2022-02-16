@@ -1,0 +1,62 @@
+{
+	"stuff":{
+		"stuff":[]
+	}
+},
+{
+	"trade_attributes":{
+		"trades":[
+				{ "trade_key":"T0001", "book_id":"B0001", "instrument_id":"I0001", "Notional":"10000" 	},
+				{ "trade_key":"T0002", "book_id":"B0001", "instrument_id":"I0002", "Notional":"200" 	},
+				{ "trade_key":"T0003", "book_id":"B0002", "instrument_id":"I0003", "Notional":"100" 	},
+				{ "trade_key":"T0004", "book_id":"B0003", "instrument_id":"I0004", "Notional":"20000" 	}
+			]
+	}
+},
+{
+	"otherstuff":{
+		"stuff":[]
+	}
+},
+{
+	"risk_measure":{
+		"measure_type": "RM_1",
+		"trades":[
+				{ "trade_key":"T0001", "value":"rm_1_t1" 	},
+				{ "trade_key":"T0002", "value":"rm_1_t2" 	},
+				{ "trade_key":"T0003", "value":"rm_1_t3" 	}
+			]
+	}
+},
+
+{
+	"otherotherstuff":{
+		"stuff":[]
+	}
+},
+{
+	"risk_measure":{
+		"measure_type": "RM_2",
+		"trades":[
+				{ "trade_key":"T0001", "value":"rm_2_t1" 	},
+				{ "trade_key":"T0002", "value":"rm_2_t2" 	},
+				{ "trade_key":"T0004", "value":"rm_2_t4" 	}
+			]
+	}
+},
+{
+	"otherotherstuff":{
+		"stuff":[]
+	}
+},
+{
+	"risk_measure":{
+		"measure_type": "RM_3",
+		"trades":[
+				{ "trade_key":"T0001", "value":"rm_3_t1" 	},
+				{ "trade_key":"T0002", "value":"rm_3_t2" 	},
+				{ "trade_key":"T0003", "value":"rm_3_t3" 	},
+				{ "trade_key":"T0004", "value":"rm_3_t4" 	}
+			]
+	}
+}
