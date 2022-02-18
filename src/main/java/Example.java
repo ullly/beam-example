@@ -14,6 +14,11 @@ import org.apache.beam.sdk.values.KV;
 import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.TupleTag;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class Example {
     public static void main(String[] args) {
 
@@ -129,6 +134,7 @@ public class Example {
                     String measureType = element.get("value").asText().substring(0, 4).toUpperCase();
                     JsonNode node = jsonNode.get(0).get(0);
                     ((ObjectNode) node).set(measureType, element.get("value"));
+                    ((ObjectNode) node).put("external_lookup",request());
                     formattedResult = node.toString();
                 }
 
@@ -140,5 +146,28 @@ public class Example {
                 .withHeader("\"trades\" : [").withFooter("]").withSuffix(".txt").withoutSharding());
 
         pipeline.run().waitUntilFinish();
+    }
+
+    public static String request() {
+
+        StringBuilder content = new StringBuilder();
+        String inputLine;
+
+        try {
+            URL url = new URL("http://localhost:8080/\n");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return content.toString();
     }
 }
