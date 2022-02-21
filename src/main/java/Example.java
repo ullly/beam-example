@@ -22,6 +22,8 @@ import java.net.URL;
 public class Example {
     public static void main(String[] args) {
 
+        String inputArg = args[0];
+
         PipelineOptions pipeLineOptions = PipelineOptionsFactory.create();
         Pipeline pipeline = Pipeline.create(pipeLineOptions);
 
@@ -134,7 +136,7 @@ public class Example {
                     String measureType = element.get("value").asText().substring(0, 4).toUpperCase();
                     JsonNode node = jsonNode.get(0).get(0);
                     ((ObjectNode) node).set(measureType, element.get("value"));
-                    ((ObjectNode) node).put("external_lookup",request());
+                    ((ObjectNode) node).put("external_lookup",request(inputArg));
                     formattedResult = node.toString();
                 }
 
@@ -148,13 +150,13 @@ public class Example {
         pipeline.run().waitUntilFinish();
     }
 
-    public static String request() {
+    public static String request(String input) {
 
         StringBuilder content = new StringBuilder();
         String inputLine;
 
         try {
-            URL url = new URL("http://localhost:8080/\n");
+            URL url = new URL(input + "\n");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
