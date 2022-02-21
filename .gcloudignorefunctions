@@ -1,0 +1,17 @@
+
+.gcloudignore
+.git
+.gitignore
+.gcloudignorefunctions
+
+LICENSE
+README.md
+
+src/main/java/resources
+src/main/java/Example.java
+src/main/scripts
+
+#!include:.gcloudignore
+#!include:.gitignore
+#!include:.gcloudignorefunctions
+

@@ -1,6 +1,0 @@
-"trades" : [
-{"trade_key":"T0003","book_id":"B0002","instrument_id":"I0003","Notional":"100","RM_1":"rm_1_t3","RM_3":"rm_3_t3"}
-{"trade_key":"T0002","book_id":"B0001","instrument_id":"I0002","Notional":"200","RM_1":"rm_1_t2","RM_3":"rm_3_t2","RM_2":"rm_2_t2"}
-{"trade_key":"T0004","book_id":"B0003","instrument_id":"I0004","Notional":"20000","RM_3":"rm_3_t4","RM_2":"rm_2_t4"}
-{"trade_key":"T0001","book_id":"B0001","instrument_id":"I0001","Notional":"10000","RM_1":"rm_1_t1","RM_3":"rm_3_t1","RM_2":"rm_2_t1"}
-]

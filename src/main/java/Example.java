@@ -26,7 +26,7 @@ public class Example {
         Pipeline pipeline = Pipeline.create(pipeLineOptions);
 
         PCollection<String> input = pipeline.apply(TextIO.read()
-                .from("/Users/ultan-work/Files/beam/beam-example/input.txt"));
+                .from("src/main/java/resources/input.txt"));
 
         PCollection<String> tradeAttributes = input.apply(Filter.by((SerializableFunction<String, Boolean>) input1
                 -> input1.contains("trade_attributes")));
@@ -142,7 +142,7 @@ public class Example {
             }
         }));
 
-        output.apply(TextIO.write().to("/Users/ultan-work/Files/beam/beam-example/output")
+        output.apply(TextIO.write().to("src/main/java/resources/output")
                 .withHeader("\"trades\" : [").withFooter("]").withSuffix(".txt").withoutSharding());
 
         pipeline.run().waitUntilFinish();
