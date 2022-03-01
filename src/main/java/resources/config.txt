@@ -1,0 +1,10 @@
+{
+steps : [
+{id: "source.RangeMessagesInput", type: "TextIO.read", from:"gs://some/inputData.txt"},
+{id: "transform.convertToWellFormattedJSON", input="source.RangeMessagesInput", type: "Pardo", of: SplitRangeMessageIntoWellFormedJSON.class},
+{id: "transform.filterTradeJSONs", input="transform.convertToWellFormattedJSON", type: "Pardo", of: FilterTradeJSON.class},
+{id: "transform.createKVPairs", input="transform.filterTradeJSONs", type: "Pardo", of: FilterTradeJSON.class},
+{id: "transform.coalesceTrades", input="transform.createKVPairs", type: "GroupByKey", of: CoalesceTradeData.class},
+{id: "sink.CoalescedTradeDate", input="transform.coalesceTrades", type: "TextIO.write", to: "gs://some/inputData.txt"},
+]
+}
