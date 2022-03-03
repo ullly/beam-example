@@ -8,20 +8,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Parser {
-    public static void main(String[] args) {
 
-        String config = readFile(args[0]);
-        JsonNode steps = getStepsAsJsonNode(config);
-        ArrayList<Step> actions = getStepsAsStep(steps);
-
-        for(int i = 0; i < actions.size(); i++) {
-            System.out.println(actions.get(i).getId());
-        }
-    }
-
-    private static ArrayList<Step> getStepsAsStep(JsonNode steps) {
+    public ArrayList<Step> getStepsAsStep(JsonNode steps) {
         ObjectMapper objectMapper = new ObjectMapper();
-        int length = 0;
         ArrayList<Step> actions = new ArrayList<>();
 
         for (JsonNode step : steps) {
@@ -36,7 +25,7 @@ public class Parser {
         return actions;
     }
 
-    public static JsonNode getStepsAsJsonNode(String config) {
+    public JsonNode getStepsAsJsonNode(String config) {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode steps = null;
         try {
@@ -48,7 +37,7 @@ public class Parser {
         return steps;
     }
 
-    public static String readFile(String path) {
+    public String readFile(String path) {
         String result = null;
         try {
             result = new String(Files.readAllBytes(Paths.get(path)));

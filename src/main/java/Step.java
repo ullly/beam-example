@@ -1,10 +1,10 @@
 public class Step {
-    public String id = "";
-    public String input = "";
-    public String type = "";
-    public String of = "";
-    public String from = "";
-    public String to = "";
+    private String id = "";
+    private String input = "";
+    private String type = "";
+    private String of = "";
+    private String from = "";
+    private String to = "";
 
     public String getId() { return this.id; }
     public void setId(String id){ this.id = id;}
