@@ -40,7 +40,7 @@
                 <artifactId>function-maven-plugin</artifactId>
                 <version>0.10.0</version>
                 <configuration>
-                    <functionTarget>WebService</functionTarget>
+                    <functionTarget>web.WebService</functionTarget>
                 </configuration>
             </plugin>
         </plugins>

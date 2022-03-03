@@ -21,7 +21,7 @@ Option 2 deploys to Cloud Functions.
 
 Pre-process step: `source src/main/scripts/pre-process.sh`
 
-Cloud Functions step: `mvn com.google.cloud.functions:function-maven-plugin:0.10.0:run -Drun.functionTarget=WebService`
+Cloud Functions step: `mvn com.google.cloud.functions:function-maven-plugin:0.10.0:run -Drun.functionTarget=web.WebService`
 
 Pipeline step: `mvn compile exec:java -Dexec.mainClass=Example -Dexec.args="http://localhost:8080/"`
 
@@ -32,7 +32,7 @@ Pre-process step: `source src/main/scripts/pre-process.sh`
 Cloud Functions step: 
 
 ```
-gcloud functions deploy WebService --region europe-west1 --entry-point WebService --ignore-file .gcloudignorefunctions --runtime java11 --trigger-http --allow-unauthenticated
+gcloud functions deploy web.WebService --region europe-west1 --entry-point web.WebService --ignore-file .gcloudignorefunctions --runtime java11 --trigger-http --allow-unauthenticated
 ```
 
 Pipeline step: `mvn compile exec:java -Dexec.mainClass=Example -Dexec.args="<Trigger-URL>/"` where `<Trigger-URL>` 

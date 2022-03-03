@@ -1,3 +1,5 @@
+package parser;
+
 public class Step {
     private String id = "";
     private String input = "";

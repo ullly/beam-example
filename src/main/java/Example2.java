@@ -1,8 +1,13 @@
+import beam.Sink;
+import beam.Source;
+import beam.Transform;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.options.PipelineOptions;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.values.PCollection;
+import parser.Parser;
+import parser.Step;
 
 import java.util.ArrayList;
 
@@ -25,7 +30,7 @@ public class Example2 {
             } else if (action.getTo() != "") {
                 to(result, action);
             } else {
-                //TODO
+                result = standard(result, action);
             }
         }
 
@@ -43,11 +48,17 @@ public class Example2 {
     public static void to(PCollection<String> output, Step step) {
         String[] id = step.getId().split("\\.");
         String method = id[1].substring(0, 1).toLowerCase() + id[1].substring(1);
+
         Sink sink = new Sink(output, step.getType(), step.getTo());
         sink.run(method);
     }
 
-    public static PCollection<String> standard(Pipeline p, Step step) {
-        return null;
+    public static PCollection<String> standard(PCollection<String> result, Step step) {
+        String[] id = step.getId().split("\\.");
+        String method = id[1].substring(0, 1).toLowerCase() + id[1].substring(1);
+
+        Transform transform = new Transform(result, step.getInput(), step.getType(), step.getOf());
+
+        return transform.run(method);
     }
 }
